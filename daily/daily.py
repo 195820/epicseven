@@ -85,25 +85,130 @@ def do_deep():
 #迷宫商人   
 def maze():
     w,h=device().get_current_resolution()
+    touch((0.8*w,0.7*h),times=2,duration=0.2)
+    sleep(3)
+    touch((0.83*w,0.89*h),times=2,duration=0.2)
+    sleep(5)
+    touch((0.9*w,0.28*h),times=2,duration=0.2)
+    sleep(10)
+    touch((0.64*w,0.32*h),duration=0.2)
+    sleep(6)
+    touch((0.84*w,0.92*h),duration=0.2)
+    sleep(12)
+    touch((0.84*w,0.92*h),duration=0.2)
+    sleep(12)
+    
+    touch((0.07*w,0.10*h),duration=0.2)
+    sleep(5)
+    swipe((0.544*w,0.158*h),(0.544*w,0.58*h),duration=6)
+    sleep(5)
+    touch((0.223*w,0.153*h),duration=0.2)
+    sleep(5)
+    touch((0.57*w,0.66*h),duration=0.2)
+    sleep(10)
+    touch((0.87*w,0.04*h),duration=0.2)
+    sleep(4)
+    touch((0.09*w,0.69*h),duration=0.2)
+    sleep(25)
+    touch((0.49*w,0.48*h),times=2,duration=0.2)
+    sleep(15)
+    
+    #强化石、书签
+    get_resources()
+    swipe((0.68*w,0.8*h),(0.68*w,0.3*h),duration=6)
+    sleep(4.0)
+    get_resources()
+    sleep(10)
+    
+    touch((0.02*w,0.04*h),duration=0.2)
+    sleep(5)
+    
+    touch((0.99*w,0.04*h),duration=0.2)
+    sleep(5)
+    touch((0.5*w,0.37*h),duration=0.2)
+    sleep(5)
+    touch((0.57*w,0.60*h),duration=0.2)
+    sleep(5)
+
+    back_home()
+
+#获取强化石和书签
+def get_resources():
+    w,h=device().get_current_resolution()
+    sleep(5)
+    #a需要修改为传说强化石
+    a=exists(Template(r"tpl1626254897369.png", record_pos=(-0.009, -0.068), resolution=(1600, 900),rgb=True))
+    b=exists(Template(r"tpl1626256286052.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True))
+    c=exists(Template(r"tpl1649837864428.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
+    d=exists(Template(r"tpl1649837898573.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
+    pos,times=get_random_arrays(100,50)  
+    # +next(pos) next(times)
+    #解决重复问题，find_all函数
+    if a:
+        sleep(2.5)
+        touch((a[0]*2+next(pos),a[1]+40+next(pos)),duration=next(times))
+        touch((a[0]*2+next(pos),a[1]+40+next(pos)),duration=next(times))
+        sleep(2.5)
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        sleep(5)
+    if b:
+        sleep(2.5)
+        touch((b[0]*2+next(pos),b[1]+40+next(pos)),duration=next(times))
+        touch((b[0]*2+next(pos),b[1]+40+next(pos)),duration=next(times))
+        sleep(2.5)
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        sleep(5)
+    if c:
+        sleep(2.5)
+        touch((c[0]*2+next(pos),c[1]+40+next(pos)),duration=next(times))
+        touch((c[0]*2+next(pos),c[1]+40+next(pos)),duration=next(times))
+        sleep(2.5)
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        sleep(5)
+    if d:
+        sleep(2.5)
+        touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
+        touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
+        sleep(2.5)
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        sleep(5)
 
 #获取水晶
 def get_crystal():
     w,h=device().get_current_resolution()
-    touch((0.19*w,0.27*h),duration=0.2)
-    touch((0.19*w,0.27*h),duration=0.05)
-    sleep(8)
-    #满了
-    touch((0.51*w,0.62*h),duration=0.05)
-    sleep(6)
-    touch((0.50*w,0.70*h),duration=0.05)
+    touch((0.8*w,0.8*h),times=2,duration=0.2)
+    sleep(3)
+    touch((0.19*w,0.27*h),times=2,duration=0.2)
+    sleep(5)
+    a=exists(Template(r"tpl1649839339328.png", record_pos=(-0.003, 0.111), resolution=(1600, 900)))
+    if a:
+        touch((a[0],a[1]),times=2,duration=0.2)
+        sleep(10)
+        touch((0.8*w,0.8*h),times=2,duration=0.2)
+        sleep(5)
+    else:
+        touch((0.51*w,0.45*h),times=2,duration=0.2)
+        sleep(5)   
+        touch((0.82*w,0.91*h),times=2,duration=0.2)
+        sleep(5)
+        touch((0.63*w,0.66*h),times=2,duration=0.2)
+        sleep(10)
+        touch((0.8*w,0.8*h),times=2,duration=0.2)
+        sleep(5)
     back_home()
 
     
-if __name__ == '__main__':        
+    
+if __name__ == '__main__':   
     arena()
     do_deep()
-    #maze()
+    maze()
     get_crystal()
+
 
 
 
