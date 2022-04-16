@@ -7,12 +7,13 @@ from airtest.core.api import *
 
 auto_setup(__file__,devices=["Android://127.0.0.1:5037/127.0.0.1:62001?cap_method=JAVACAP&&ori_method=ADBORI"])
 
+#设置随机位点和时间
 def get_random_arrays(num1,num2):
     random_array1=(random.randint(-15,15) for i in range(num1))
     random_array2=(random.uniform(0.15,0.5) for i in range(num2))
     return random_array1,random_array2
 
-#增加任务完成的判定
+#任务完成返回大厅
 def back_home():
     w,h=device().get_current_resolution()
     touch((0.98*w,0.04*h),times=2,duration=0.2)
@@ -136,11 +137,13 @@ def maze():
 def get_resources():
     w,h=device().get_current_resolution()
     sleep(5)
-    #a需要修改为传说强化石
-    a=exists(Template(r"tpl1626254897369.png", record_pos=(-0.009, -0.068), resolution=(1600, 900),rgb=True))
-    b=exists(Template(r"tpl1626256286052.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True))
-    c=exists(Template(r"tpl1649837864428.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
-    d=exists(Template(r"tpl1649837898573.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
+    a=exists(Template(r"tpl1626256286052.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
+    b=exists(Template(r"tpl1650010999010.png", record_pos=(-0.031, 0.168), resolution=(1600, 900),rgb=True,threshold=0.6))
+    c=exists(Template(r"tpl1649837864428.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
+
+    D=find_all(Template(r"tpl1650012031334.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
+    E=find_all(Template(r"tpl1650012844828.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
+    F=find_all(Template(r"tpl1650012871493.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
     pos,times=get_random_arrays(100,50)  
     # +next(pos) next(times)
     #解决重复问题，find_all函数
@@ -168,15 +171,33 @@ def get_resources():
         touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
         touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
         sleep(5)
-    if d:
-        sleep(2.5)
-        touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
-        touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
-        sleep(2.5)
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        sleep(5)
-
+    if D:
+        for d in [x.get('result') for x in D]:
+            sleep(2.5)
+            touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
+            touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
+            sleep(2.5)
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            sleep(5)
+    if E:
+        for e in [x.get('result') for x in E]:
+            sleep(2.5)
+            touch((e[0]*2+next(pos),e[1]+40+next(pos)),duration=next(times))
+            touch((e[0]*2+next(pos),e[1]+40+next(pos)),duration=next(times))
+            sleep(2.5)
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            sleep(5)
+    if F:
+        for f in [x.get('result') for x in F]:
+            sleep(2.5)
+            touch((f[0]*2+next(pos),f[1]+40+next(pos)),duration=next(times))
+            touch((f[0]*2+next(pos),f[1]+40+next(pos)),duration=next(times))
+            sleep(2.5)
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            sleep(5)
 #获取水晶
 def get_crystal():
     w,h=device().get_current_resolution()
@@ -199,16 +220,14 @@ def get_crystal():
         sleep(10)
         touch((0.8*w,0.8*h),times=2,duration=0.2)
         sleep(5)
-    back_home()
-
-    
+    back_home()    
     
 if __name__ == '__main__':   
     do_deep()
     maze()
     get_crystal()
     arena()
-
+    
 
 
 
