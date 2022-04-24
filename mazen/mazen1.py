@@ -57,6 +57,10 @@ def mazen1():
     touch((0.87*w,0.03*h),duration=0.2)
     sleep(5)
     '''
+    if not exists(Template(r"tpl1650014663425.png", record_pos=(0.284, 0.265), resolution=(1600, 900),rgb=True,threshold=0.5)):
+        touch((0.88*w,0.043*h),duration=0.2)
+        sleep(4)
+    
     a=['w','w','w','n','n','n','w']
     wsen(a)
     

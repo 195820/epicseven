@@ -51,6 +51,9 @@ def mazen():
     sleep(12)
     touch((0.84*w,0.92*h),duration=0.2)
     sleep(12)
+    if not exists(Template(r"tpl1650014663425.png", record_pos=(0.284, 0.265), resolution=(1600, 900),rgb=True,threshold=0.5)):
+        touch((0.88*w,0.043*h),duration=0.2)
+        sleep(4)
     '''
     touch((0.84*w,0.92*h),times=2,duration=0.2)
     sleep(12)

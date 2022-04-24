@@ -42,14 +42,14 @@ def arena():
     touch((0.88*w,0.3*h),duration=0.2)
     a=1
     while(a):
-        a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True,threshold=0.4))
+        a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True,threshold=0.66))
         if not a:
             #touch((0.58*w,0.66*h),times=2,duration=0.5)
             swipe((0.5*w,0.99*h),(0.5*w,0.01*h),duration=3)
             sleep(2)
             swipe((0.5*w,0.99*h),(0.5*w,0.01*h),duration=6)
             sleep(8)
-            a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True,threshold=0.4))
+            a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True,threshold=0.66))
             if not a:
                 break
         touch((a[0],a[1]),duration=0.2)
@@ -138,7 +138,7 @@ def get_resources():
     w,h=device().get_current_resolution()
     sleep(5)
     a=exists(Template(r"tpl1626256286052.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
-    b=exists(Template(r"tpl1650010999010.png", record_pos=(-0.031, 0.168), resolution=(1600, 900),rgb=True,threshold=0.6))
+    b=exists(Template(r"tpl1650010999010.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
     c=exists(Template(r"tpl1649837864428.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
 
     D=find_all(Template(r"tpl1650012031334.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
@@ -223,10 +223,10 @@ def get_crystal():
     back_home()    
     
 if __name__ == '__main__':   
-    do_deep()
-    maze()
-    get_crystal()
     arena()
+    do_deep()
+    get_crystal()
+    maze()
     
 
 
