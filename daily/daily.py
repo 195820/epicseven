@@ -7,12 +7,13 @@ from airtest.core.api import *
 
 auto_setup(__file__,devices=["Android://127.0.0.1:5037/127.0.0.1:62001?cap_method=JAVACAP&&ori_method=ADBORI"])
 
+#设置随机位点和时间
 def get_random_arrays(num1,num2):
     random_array1=(random.randint(-15,15) for i in range(num1))
     random_array2=(random.uniform(0.15,0.5) for i in range(num2))
     return random_array1,random_array2
 
-#增加任务完成的判定
+#任务完成返回大厅
 def back_home():
     w,h=device().get_current_resolution()
     touch((0.98*w,0.04*h),times=2,duration=0.2)
@@ -41,14 +42,14 @@ def arena():
     touch((0.88*w,0.3*h),duration=0.2)
     a=1
     while(a):
-        a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True))
+        a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True,threshold=0.66))
         if not a:
             #touch((0.58*w,0.66*h),times=2,duration=0.5)
             swipe((0.5*w,0.99*h),(0.5*w,0.01*h),duration=3)
             sleep(2)
             swipe((0.5*w,0.99*h),(0.5*w,0.01*h),duration=6)
             sleep(8)
-            a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True))
+            a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True,threshold=0.66))
             if not a:
                 break
         touch((a[0],a[1]),duration=0.2)
@@ -129,6 +130,7 @@ def maze():
     sleep(5)
     touch((0.57*w,0.60*h),duration=0.2)
     sleep(5)
+<<<<<<< HEAD
 
     back_home()
 
@@ -176,7 +178,76 @@ def get_resources():
         touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
         touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
         sleep(5)
+=======
+>>>>>>> 6c4a175171ac721199c38544296727e72c5194b5
 
+    back_home()
+
+#获取强化石和书签
+def get_resources():
+    w,h=device().get_current_resolution()
+    sleep(5)
+    a=exists(Template(r"tpl1626256286052.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
+    b=exists(Template(r"tpl1650010999010.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
+    c=exists(Template(r"tpl1649837864428.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
+
+    D=find_all(Template(r"tpl1650012031334.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
+    E=find_all(Template(r"tpl1650012844828.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
+    F=find_all(Template(r"tpl1650012871493.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
+    pos,times=get_random_arrays(100,50)  
+    # +next(pos) next(times)
+    #解决重复问题，find_all函数
+    if a:
+        sleep(2.5)
+        touch((a[0]*2+next(pos),a[1]+40+next(pos)),duration=next(times))
+        touch((a[0]*2+next(pos),a[1]+40+next(pos)),duration=next(times))
+        sleep(2.5)
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        sleep(5)
+    if b:
+        sleep(2.5)
+        touch((b[0]*2+next(pos),b[1]+40+next(pos)),duration=next(times))
+        touch((b[0]*2+next(pos),b[1]+40+next(pos)),duration=next(times))
+        sleep(2.5)
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        sleep(5)
+    if c:
+        sleep(2.5)
+        touch((c[0]*2+next(pos),c[1]+40+next(pos)),duration=next(times))
+        touch((c[0]*2+next(pos),c[1]+40+next(pos)),duration=next(times))
+        sleep(2.5)
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+        sleep(5)
+    if D:
+        for d in [x.get('result') for x in D]:
+            sleep(2.5)
+            touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
+            touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
+            sleep(2.5)
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            sleep(5)
+    if E:
+        for e in [x.get('result') for x in E]:
+            sleep(2.5)
+            touch((e[0]*2+next(pos),e[1]+40+next(pos)),duration=next(times))
+            touch((e[0]*2+next(pos),e[1]+40+next(pos)),duration=next(times))
+            sleep(2.5)
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            sleep(5)
+    if F:
+        for f in [x.get('result') for x in F]:
+            sleep(2.5)
+            touch((f[0]*2+next(pos),f[1]+40+next(pos)),duration=next(times))
+            touch((f[0]*2+next(pos),f[1]+40+next(pos)),duration=next(times))
+            sleep(2.5)
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
+            sleep(5)
 #获取水晶
 def get_crystal():
     w,h=device().get_current_resolution()
@@ -199,6 +270,7 @@ def get_crystal():
         sleep(10)
         touch((0.8*w,0.8*h),times=2,duration=0.2)
         sleep(5)
+<<<<<<< HEAD
     back_home()
 
     
@@ -207,7 +279,16 @@ if __name__ == '__main__':
     arena()
     do_deep()
     maze()
+=======
+    back_home()    
+    
+if __name__ == '__main__':   
+    arena()
+    do_deep()
+>>>>>>> 6c4a175171ac721199c38544296727e72c5194b5
     get_crystal()
+    maze()
+    
 
 
 

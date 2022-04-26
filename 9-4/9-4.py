@@ -6,6 +6,7 @@ import random
 from airtest.core.api import *
 
 auto_setup(__file__,devices=["Android://127.0.0.1:5037/127.0.0.1:62001?cap_method=JAVACAP&&ori_method=ADBORI"])
+flag=0
 
 def get_random_arrays(num1,num2):
     random_array1=(random.randint(-15,15) for i in range(num1))
@@ -13,6 +14,7 @@ def get_random_arrays(num1,num2):
     return random_array1,random_array2
 
 def nine_four(num):
+    global flag
     w,h=device().get_current_resolution()
     dict={'w':(0.09*w,0.71*h),'s':(0.9*w,0.71*h),'e':(0.9*w,0.34*h),'n':(0.09*w,0.35*h)}
     while(num>0):
@@ -21,6 +23,13 @@ def nine_four(num):
         touch((0.81*w,0.91*h),duration=0.2)
         sleep(5)
         touch((0.81*w,0.91*h),duration=0.2)
+        sleep(6)
+        if(flag==0):
+            if not exists(Template(r"tpl1650014663425.png", record_pos=(0.284, 0.265), resolution=(1600, 900),rgb=True,threshold=0.6)):
+                touch((0.88*w,0.043*h),duration=0.2)
+                flag=1
+                sleep(4)
+
         sleep(30)
         touch(dict['s'],duration=0.5)
         sleep(30)
@@ -59,7 +68,7 @@ def nine_four(num):
         touch((0.9*w,0.9*h),times=2,duration=0.2)
         sleep(10)
         num-=1
-        if(num%20==0):
+        if(num%50==0):
             clear_weapon()
             #clear_heros()
 
