@@ -40,16 +40,16 @@ def arena():
     touch((0.76*w,0.47*h),times=2,duration=0.2)
     sleep(10)
     touch((0.88*w,0.3*h),duration=0.2)
-    a=1
+    a=1    
     while(a):
-        a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True,threshold=0.66))
+        a=exists(Template(r"tpl1652163610026.png", record_pos=(0.228, 0.104), resolution=(1600, 900),threshold=0.8))
         if not a:
             #touch((0.58*w,0.66*h),times=2,duration=0.5)
             swipe((0.5*w,0.99*h),(0.5*w,0.01*h),duration=3)
             sleep(2)
             swipe((0.5*w,0.99*h),(0.5*w,0.01*h),duration=6)
             sleep(8)
-            a=exists(Template(r"tpl1632998523422.png", record_pos=(0.228, 0.104), resolution=(1600, 900),rgb=True,threshold=0.66))
+            a=exists(Template(r"tpl1652163610026.png", record_pos=(0.228, 0.104), resolution=(1600, 900),threshold=0.8))
             if not a:
                 break
         touch((a[0],a[1]),duration=0.2)
@@ -64,6 +64,7 @@ def arena():
         sleep(20)
         touch((0.9*w,0.9*h),duration=0.1)
         sleep(20)
+        
     back_home()
  
 #深渊
@@ -130,7 +131,6 @@ def maze():
     sleep(5)
     touch((0.57*w,0.60*h),duration=0.2)
     sleep(5)
-<<<<<<< HEAD
 
     back_home()
 
@@ -178,8 +178,7 @@ def get_resources():
         touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
         touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
         sleep(5)
-=======
->>>>>>> 6c4a175171ac721199c38544296727e72c5194b5
+
 
     back_home()
 
@@ -270,24 +269,18 @@ def get_crystal():
         sleep(10)
         touch((0.8*w,0.8*h),times=2,duration=0.2)
         sleep(5)
-<<<<<<< HEAD
     back_home()
 
     
+     
     
 if __name__ == '__main__':   
     arena()
     do_deep()
-    maze()
-=======
-    back_home()    
-    
-if __name__ == '__main__':   
-    arena()
-    do_deep()
->>>>>>> 6c4a175171ac721199c38544296727e72c5194b5
     get_crystal()
     maze()
+
+
     
 
 
