@@ -42,7 +42,6 @@ def arena():
     touch((0.88*w,0.3*h),duration=0.2)
     a=1    
     while(a):
-
         a=exists(Template(r"tpl1652163610026.png", record_pos=(0.228, 0.104), resolution=(1600, 900),threshold=0.8))
 
         if not a:
@@ -52,7 +51,6 @@ def arena():
             swipe((0.5*w,0.99*h),(0.5*w,0.01*h),duration=6)
             sleep(8)
             a=exists(Template(r"tpl1652163610026.png", record_pos=(0.228, 0.104), resolution=(1600, 900),threshold=0.8))
-
             if not a:
                 break
         touch((a[0],a[1]),duration=0.2)
@@ -225,6 +223,7 @@ def get_crystal():
         sleep(10)
         touch((0.8*w,0.8*h),times=2,duration=0.2)
         sleep(5)
+
     back_home()    
 
 if __name__ == '__main__':   
