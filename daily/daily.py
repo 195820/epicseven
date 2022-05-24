@@ -269,16 +269,35 @@ def get_crystal():
         sleep(10)
         touch((0.8*w,0.8*h),times=2,duration=0.2)
         sleep(5)
+    forest()
     back_home()
 
-    
-     
+def forest():
+    w,h=device().get_current_resolution()
+    touch((0.26*w,0.23*h),times=2,duration=0.2)
+    sleep(5)
+    #萝卜
+    touch((0.59*w,0.61*h),times=2,duration=0.2)
+    sleep(5)
+    touch((0.05*w,0.78*h),times=2,duration=0.2)
+    sleep(3)
+    #企鹅
+    touch((0.43*w,0.19*h),times=2,duration=0.2)
+    sleep(5)
+    touch((0.31*w,0.71*h),times=2,duration=0.2)
+    sleep(3)    
+    #狗粮
+    touch((0.78*w,0.36*h),times=2,duration=0.2)
+    sleep(5)
+    touch((0.31*w,0.71*h),times=2,duration=0.2)
+    sleep(3) 
     
 if __name__ == '__main__':   
     arena()
     do_deep()
     get_crystal()
     maze()
+    
 
 
     
