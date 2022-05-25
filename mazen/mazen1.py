@@ -49,6 +49,8 @@ def mazen1():
     sleep(6)
     touch((0.84*w,0.92*h),duration=0.2)
     sleep(12)
+    touch((0.04*w,0.54*h),duration=0.2)
+    sleep(8)
     touch((0.84*w,0.92*h),duration=0.2)
     sleep(12)
     '''
