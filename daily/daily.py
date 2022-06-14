@@ -40,7 +40,8 @@ def arena():
     touch((0.76*w,0.47*h),times=2,duration=0.2)
     sleep(10)
     touch((0.88*w,0.3*h),duration=0.2)
-    a=1    
+    a=1  
+    sleep(10)  
     while(a):
         a=exists(Template(r"tpl1652163610026.png", record_pos=(0.228, 0.104), resolution=(1600, 900),threshold=0.8))
         if not a:
