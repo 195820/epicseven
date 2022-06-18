@@ -40,8 +40,8 @@ def arena():
     touch((0.76*w,0.47*h),times=2,duration=0.2)
     sleep(10)
     touch((0.88*w,0.3*h),duration=0.2)
-    sleep(10)
-    a=1    
+    a=1  
+    sleep(10)  
     while(a):
         a=exists(Template(r"tpl1652163610026.png", record_pos=(0.228, 0.104), resolution=(1600, 900),threshold=0.8))
 
@@ -141,55 +141,6 @@ def maze():
 def get_resources():
     w,h=device().get_current_resolution()
     sleep(5)
-    #a需要修改为传说强化石
-    a=exists(Template(r"tpl1626254897369.png", record_pos=(-0.009, -0.068), resolution=(1600, 900),rgb=True))
-    b=exists(Template(r"tpl1626256286052.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True))
-    c=exists(Template(r"tpl1649837864428.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
-    d=exists(Template(r"tpl1649837898573.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.4))
-    pos,times=get_random_arrays(100,50)  
-    # +next(pos) next(times)
-    #解决重复问题，find_all函数
-    if a:
-        sleep(2.5)
-        touch((a[0]*2+next(pos),a[1]+40+next(pos)),duration=next(times))
-        touch((a[0]*2+next(pos),a[1]+40+next(pos)),duration=next(times))
-        sleep(2.5)
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        sleep(5)
-    if b:
-        sleep(2.5)
-        touch((b[0]*2+next(pos),b[1]+40+next(pos)),duration=next(times))
-        touch((b[0]*2+next(pos),b[1]+40+next(pos)),duration=next(times))
-        sleep(2.5)
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        sleep(5)
-    if c:
-        sleep(2.5)
-        touch((c[0]*2+next(pos),c[1]+40+next(pos)),duration=next(times))
-        touch((c[0]*2+next(pos),c[1]+40+next(pos)),duration=next(times))
-        sleep(2.5)
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        sleep(5)
-    if d:
-        sleep(2.5)
-        touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
-        touch((d[0]*2+next(pos),d[1]+40+next(pos)),duration=next(times))
-        sleep(2.5)
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        touch((0.56*w+next(pos),0.70*h+next(pos)),duration=next(times))
-        sleep(5)
-
-
-    back_home()
-
-
-#获取强化石和书签
-def get_resources():
-    w,h=device().get_current_resolution()
-    sleep(5)
     a=exists(Template(r"tpl1626256286052.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
     b=exists(Template(r"tpl1650010999010.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
     c=exists(Template(r"tpl1649837864428.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
@@ -264,6 +215,10 @@ def get_crystal():
         sleep(10)
         touch((0.8*w,0.8*h),times=2,duration=0.2)
         sleep(5)
+        #页面返回，位置？
+        touch((0.05*w,0.05*h),times=2,duration=0.2)
+        sleep(5)
+
     else:
         touch((0.51*w,0.45*h),times=2,duration=0.2)
         sleep(5)   
