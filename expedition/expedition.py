@@ -3,8 +3,11 @@ __author__ = "thl"
 '''初次执行的特殊操作未实现'''
 
 from airtest.core.api import *
+from airtest.aircv import *
 import random
 import sys
+sys.path.append('..')
+
 
 auto_setup(__file__,devices=["Android://127.0.0.1:5037/127.0.0.1:62001?cap_method=JAVACAP&&ori_method=ADBORI"])
 battleflag=0
@@ -18,10 +21,20 @@ def do_wanted(w,h):
     autoflag=0
     global battleflag
     while(True):
-        a=exists(Template(r"tpl1627784392811.png", record_pos=(0.426, -0.081), resolution=(1600, 900)))
+        screen = G.DEVICE.snapshot() 
+        # 局部截图
+        local_screen = aircv.crop_image(screen,(714,129,795,157))
+
+        # 将我们的目标截图设置为一个Template对象
+        tempalte = Template(r"tpl1656226095461.png")
+        # 在局部截图里面查找指定的图片对象
+        pos = tempalte.match_in(local_screen)
+
         i=random.randint(-10,10)
-        if a:
-            touch((0.92*w+i,0.44*h-i),duration=0.1)
+        if not (pos):
+            touch((0.71*w+i,0.23*h-i),duration=0.1)
+            sleep(4)
+            touch((0.92*w+i,0.73*h-i),duration=0.1)
             sleep(4)
             touch((0.87*w+i,0.92*h-i),duration=0.5)
             sleep(15)
@@ -36,7 +49,7 @@ def do_wanted(w,h):
                     touch((0.88*w,0.043*h),duration=0.2)
                     autoflag=1
                     sleep(8)
-            sleep(400)
+            sleep(500)
             touch((0.12*w+i,0.92*h-i),duration=0.3)
             sleep(8)
             continue
@@ -72,7 +85,13 @@ def expedition(a,b,c):
             sleep(3)
             do_wanted(w,h)
 
-        sleep(1200)
+        break
 if __name__ == '__main__':
-    flag=[False,False,False]
     expedition(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
+
+
+
+
+
+
+
