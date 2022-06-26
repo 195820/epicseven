@@ -1,12 +1,19 @@
 # -*- encoding=utf8 -*-
 __author__ = "195820"
 
+import sys 
+sys.path.append("..")
 from airtest.core.api import *
+from location import Location
 
 auto_setup(__file__,devices=["Android://127.0.0.1:5037/127.0.0.1:62001?cap_method=JAVACAP&&ori_method=ADBORI"])
 
 w,h=device().get_current_resolution()
 dict={'w':(0.09*w,0.71*h),'s':(0.9*w,0.71*h),'e':(0.9*w,0.34*h),'n':(0.09*w,0.35*h),'map':(0.07*w,0.10*h),'confirm':(0.576*w,0.66*h),'camp':(0.11*w,0.93*h)}
+
+#根据相对位点获取实际位点
+def get_true_location(a):
+    return (a[0]*w,a[1]*h)
 
 def recover():
     touch(dict['camp'],duration=0.2)
@@ -38,11 +45,12 @@ def wsen(direction):
         sleep(300)        
 
 def mazen1():
-    touch((0.8*w,0.7*h),times=2,duration=0.2)
-    touch((0.83*w,0.89*h),times=2,duration=0.2)
+    touch(get_true_location(Location.random.value),times=2,duration=0.2)
+    sleep(1)
+    touch(get_true_location(Location.battle.value),times=2,duration=0.2)
     sleep(5)
-    touch((0.9*w,0.28*h),times=2,duration=0.2)
-    sleep(5)
+    touch(get_true_location(Location.maze.value),times=2,duration=0.2)
+    sleep(6)
     swipe((0.67*w,0.99*h),(0.67*w,0.01*h),duration=3)
     sleep(8)
     touch((0.64*w,0.84*h),duration=0.2)

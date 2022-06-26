@@ -1,11 +1,18 @@
 # -*- encoding=utf8 -*-
 __author__ = "thl"
 
-import sys
+import sys 
+sys.path.append("..")
 import random
 from airtest.core.api import *
+from location import Location
 
 auto_setup(__file__,devices=["Android://127.0.0.1:5037/127.0.0.1:62001?cap_method=JAVACAP&&ori_method=ADBORI"])
+w,h=device().get_current_resolution()
+
+#根据相对位点获取实际位点
+def get_true_location(a):
+    return (a[0]*w,a[1]*h)
 
 #设置随机位点和时间
 def get_random_arrays(num1,num2):
@@ -15,27 +22,24 @@ def get_random_arrays(num1,num2):
 
 #任务完成返回大厅
 def back_home():
-    w,h=device().get_current_resolution()
     touch((0.98*w,0.04*h),times=2,duration=0.2)
     sleep(2)  
-    touch((0.89*w,0.94*h),duration=0.2)
+    touch(get_true_location(Location.hall.value),duration=0.2)
     sleep(15)
 
 #竞技场
 def arena():
-    w,h=device().get_current_resolution()
-    touch((0.8*w,0.7*h),times=2,duration=0.2)
+    touch(get_true_location(Location.random.value),times=2,duration=0.2)
     touch((0.48*w,0.03*h),times=2,duration=0.05)
     sleep(2)
-
     if not exists(Template(r"tpl1633875582935.png", record_pos=(-0.104, -0.005), resolution=(1600, 900))):
-        touch((0.56*w,0.71*h),duration=0.2)
+        touch((0.56*w,0.71*h),times=2,duration=0.2)
         sleep(2)
     else:
         touch((0.40*w,0.71*h),times=2,duration=0.2)
         sleep(2)
         
-    touch((0.75*w,0.9*h),times=2,duration=0.5)
+    touch(get_true_location(Location.arena.value),times=2,duration=0.5)
     sleep(2)
     touch((0.76*w,0.47*h),times=2,duration=0.2)
     sleep(10)
@@ -60,26 +64,24 @@ def arena():
         sleep(30)
         touch((0.5*w,0.45*h),times=2,duration=0.1)
         sleep(10)
-        touch((0.87*w,0.04*h),duration=0.1)
-        sleep(90)
+        touch(get_true_location(Location.auto_battle.value),duration=0.1)
+        sleep(50)
         touch((0.5*w,0.45*h),duration=0.1)
-        sleep(20)
+        sleep(15)
         touch((0.9*w,0.9*h),duration=0.1)
-        sleep(20)
-        
+        sleep(20)        
     back_home()
  
 #深渊
 def do_deep():
-    w,h=device().get_current_resolution()
-    touch((0.8*w,0.7*h),times=2,duration=0.2)
-    touch((0.83*w,0.89*h),times=2,duration=0.2)
+    touch(get_true_location(Location.random.value),times=2,duration=0.2)
+    sleep(1)
+    touch(get_true_location(Location.battle.value),times=2,duration=0.2)
     sleep(5)
-    touch((0.53*w,0.59*h),times=2,duration=0.2)
+    touch(get_true_location(Location.abyss.value),times=2,duration=0.2)
     sleep(6)
-    touch((0.65*w,0.90*h),times=2,duration=0.2)
-    sleep(10)
     touch((0.1*w,0.90*h),times=2,duration=0.2)
+    sleep(2)
     touch((0.58*w,0.73*h),times=2,duration=0.2)
     sleep(8)
     touch((0.58*w,0.73*h),times=2,duration=0.2)
@@ -88,12 +90,11 @@ def do_deep():
     
 #迷宫商人   
 def maze():
-    w,h=device().get_current_resolution()
-    touch((0.8*w,0.7*h),times=2,duration=0.2)
-    sleep(3)
-    touch((0.83*w,0.89*h),times=2,duration=0.2)
+    touch(get_true_location(Location.random.value),times=2,duration=0.2)
+    sleep(1)
+    touch(get_true_location(Location.battle.value),times=2,duration=0.2)
     sleep(5)
-    touch((0.9*w,0.28*h),times=2,duration=0.2)
+    touch(get_true_location(Location.maze.value),times=2,duration=0.2)
     sleep(10)
     touch((0.64*w,0.32*h),duration=0.2)
     sleep(6)
@@ -102,17 +103,17 @@ def maze():
     touch((0.84*w,0.92*h),duration=0.2)
     sleep(12)
     
-    touch((0.07*w,0.10*h),duration=0.2)
+    touch(get_true_location(Location.map.value),duration=0.2)
     sleep(5)
     swipe((0.544*w,0.158*h),(0.544*w,0.58*h),duration=6)
     sleep(5)
     touch((0.223*w,0.153*h),duration=0.2)
     sleep(5)
-    touch((0.57*w,0.66*h),duration=0.2)
+    touch(get_true_location(Location.confirm.value),duration=0.2)
     sleep(10)
-    touch((0.87*w,0.04*h),duration=0.2)
+    touch(get_true_location(Location.auto_battle.value),duration=0.2)
     sleep(4)
-    touch((0.09*w,0.69*h),duration=0.2)
+    touch(get_true_location(Location.w.value),duration=0.2)
     sleep(25)
     touch((0.49*w,0.48*h),times=2,duration=0.2)
     sleep(15)
@@ -139,7 +140,6 @@ def maze():
 
 #获取强化石和书签
 def get_resources():
-    w,h=device().get_current_resolution()
     sleep(5)
     a=exists(Template(r"tpl1626256286052.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
     b=exists(Template(r"tpl1650010999010.png", record_pos=(-0.019, 0.001), resolution=(1600, 900),rgb=True,threshold=0.6))
@@ -204,9 +204,8 @@ def get_resources():
             sleep(5)
 #获取水晶
 def get_crystal():
-    w,h=device().get_current_resolution()
-    touch((0.8*w,0.8*h),times=2,duration=0.2)
-    sleep(3)
+    touch(get_true_location(Location.random.value),times=2,duration=0.2)
+    sleep(2)
     touch((0.19*w,0.27*h),times=2,duration=0.2)
     sleep(5)
     a=exists(Template(r"tpl1649839339328.png", record_pos=(-0.003, 0.111), resolution=(1600, 900)))
@@ -215,10 +214,6 @@ def get_crystal():
         sleep(10)
         touch((0.8*w,0.8*h),times=2,duration=0.2)
         sleep(5)
-        #页面返回，位置？
-        touch((0.05*w,0.05*h),times=2,duration=0.2)
-        sleep(5)
-
     else:
         touch((0.51*w,0.45*h),times=2,duration=0.2)
         sleep(5)   
@@ -226,13 +221,12 @@ def get_crystal():
         sleep(5)
         touch((0.63*w,0.66*h),times=2,duration=0.2)
         sleep(10)
-        touch((0.8*w,0.8*h),times=2,duration=0.2)
+        touch(get_true_location(Location.return_on_leftup.value),times=2,duration=0.2)
         sleep(5)
     forest()
     back_home()
 
 def forest():
-    w,h=device().get_current_resolution()
     touch((0.26*w,0.23*h),times=2,duration=0.2)
     sleep(5)
     #萝卜
