@@ -33,8 +33,8 @@ goto 7
 @echo off
 C:
 cd C:\Users\%USERNAME%\Desktop\epicseven\expedition
-echo 输入1后按回车，非公开远征
-echo 输入2后按回车，公开远征
+echo 输入1后按回车，公开远征
+echo 输入2后按回车，非公开远征
 echo.
 set /p start1=选择数字后按回车：
 if "%start1%"=="2" goto 8
