@@ -6,6 +6,7 @@ __author__ = "thl"
 
 import sys
 sys.path.append("..")
+sys.path.append(".")
 
 auto_setup(__file__, devices=[
            "Android://127.0.0.1:5037/127.0.0.1:62001?cap_method=JAVACAP&&ori_method=ADBORI"])
