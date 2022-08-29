@@ -100,4 +100,4 @@ def mazen():
     #back
 
 if __name__ == '__main__':   
-    recover()
+    mazen()
