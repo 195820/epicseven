@@ -3,6 +3,7 @@ __author__ = "195820"
 
 import sys 
 sys.path.append(".")
+sys.path.append("..")
 from airtest.core.api import *
 from location import Location
 
