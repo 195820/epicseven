@@ -117,8 +117,9 @@ def maze():
     touch((0.84*w, 0.92*h), duration=0.2)
     sleep(12)
     touch((0.84*w, 0.92*h), duration=0.2)
-    sleep(12)
 
+    touch((0.05*w, 0.5*h), times=80,duration=0.1)
+    sleep(5)
     touch(get_true_location(Location.map.value), duration=0.2)
     sleep(5)
     swipe((0.544*w, 0.158*h), (0.544*w, 0.58*h), duration=6)
@@ -127,10 +128,11 @@ def maze():
     sleep(5)
     touch(get_true_location(Location.confirm.value), duration=0.2)
     sleep(10)
-    touch(get_true_location(Location.auto_battle.value), duration=0.2)
-    sleep(4)
+    if not exists(Template(r"tpl1650014663425.png", record_pos=(0.284, 0.265), resolution=(1600, 900),rgb=True,threshold=0.5)):
+        touch(get_true_location(Location.auto_battle.value), duration=0.2)
+        sleep(4)
     touch(get_true_location(Location.w.value), duration=0.2)
-    sleep(25)
+    sleep(65)
     touch((0.49*w, 0.48*h), times=2, duration=0.2)
     sleep(15)
 
