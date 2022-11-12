@@ -2,6 +2,7 @@
 __author__ = "195820"
 
 import sys 
+sys.path.append(".")
 sys.path.append("..")
 from airtest.core.api import *
 from location import Location
@@ -70,15 +71,13 @@ def mazen():
     touch((0.87*w,0.03*h),duration=0.2)
     sleep(5)
     '''
-    a=['w','s','w','s','s','e']
+    a=['w','s','n','w','w']
     wsen(a)
     
     #back home
     touch(dict['map'],duration=0.1)
     sleep(5)
-    swipe((0.46*w,0.085*h),(0.486*w,0.657*h),duration=8)
-    sleep(5)
-    touch((0.25*w,0.232*h),duration=0.1)
+    touch((0.62*w,0.005*h),duration=0.1)
     sleep(2)
     touch(dict['confirm'],duration=0.1)
     sleep(10)
@@ -86,15 +85,15 @@ def mazen():
     #recover emote
     recover()
     
-    b=['e','e','e','e','n','e']
+    b=['e','s','e','s','e','s']
     wsen(b)
     
     #back home
     touch(dict['map'],duration=0.1)
     sleep(5)
-    swipe((0.271*w,0.914*h),(0.549*w,0.209*h),duration=8)
+    swipe((0.169*w,0.705*h),(0.486*w,0.708*h),duration=8)
     sleep(5)
-    touch((0.28*w,0.597*h),duration=0.1)
+    touch((0.184*w,0.606*h),duration=0.1)
     sleep(2)
     touch(dict['confirm'],duration=0.1)
     sleep(10)

@@ -57,7 +57,8 @@ echo 执行完成
 goto 7
 :5
 cd C:\Users\%USERNAME%\Desktop\epicseven\mazen
-set /p num4=迷宫次数(2,3)：
+set /p num4=迷宫次数(1,2,3)：
+if "%num4%"=="1" python mazen0.py
 if "%num4%"=="2" python mazen.py
 if "%num4%"=="3" python mazen1.py
 :6

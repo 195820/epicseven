@@ -8,6 +8,7 @@ import sys
 sys.path.append("..")
 sys.path.append(".")
 
+
 auto_setup(__file__, devices=[
            "Android://127.0.0.1:5037/127.0.0.1:62001?cap_method=JAVACAP&&ori_method=ADBORI"])
 w, h = device().get_current_resolution()
@@ -82,6 +83,7 @@ def arena():
         sleep(15)
         touch((0.9*w, 0.9*h), duration=0.1)
         sleep(20)
+        
     back_home()
 
 # 深渊

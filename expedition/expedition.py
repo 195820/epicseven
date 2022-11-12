@@ -22,6 +22,10 @@ def do_wanted(w,h):
     global battleflag
     i=0
     while(True):
+        a=exists(Template(r"tpl1627784392811.png", record_pos=(0.426, -0.081), resolution=(1600, 900)))
+        i=random.randint(-10,10)
+        if a:
+            touch((0.92*w+i,0.33*h-i),duration=0.1)
         i+=1
         if i<=20:
             touch((0.71*w+i,0.23*h-i),duration=0.1)
