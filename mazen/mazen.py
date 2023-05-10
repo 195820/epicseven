@@ -12,10 +12,15 @@ w,h=device().get_current_resolution()
 dict={'w':(0.09*w,0.71*h),'s':(0.9*w,0.71*h),'e':(0.9*w,0.34*h),'n':(0.09*w,0.35*h),'map':(0.07*w,0.10*h),'confirm':(0.576*w,0.66*h),'camp':(0.11*w,0.93*h)}
 
 #根据相对位点获取实际位点
-def get_true_location(a):
+def get_true_location(a):snapshot(msg="请填写测试点.")
+
     return (a[0]*w,a[1]*h)
 
-def recover():
+def recover():snapshot(msg="请填写测试点.")
+snapshot(msg="请填写测试点.")
+snapshot(msg="请填写exists(Template(r"tpl1683703189357.png", record_pos=(0.16, 0.066), resolution=(1600, 900)))
+测试点.")
+
     touch(dict['camp'],duration=0.2)
     sleep(2)
     touch(dict['confirm'],duration=0.2)
