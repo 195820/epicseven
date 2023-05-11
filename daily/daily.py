@@ -112,7 +112,9 @@ def maze():
     sleep(5)
     touch(get_true_location(Location.maze.value), times=2, duration=0.2)
     sleep(10)
-    touch((0.64*w, 0.32*h), duration=0.2)
+    if(exists(Template(r"tpl1683703189357.png"))):
+        a=exists(Template(r"tpl1683703189357.png"))
+        touch((a[0], a[1]), duration=0.2)
     sleep(6)
     touch((0.84*w, 0.92*h), duration=0.2)
     sleep(12)
@@ -275,7 +277,7 @@ def forest():
     sleep(3)
 
 
-def daily():
+if __name__=="__main__":
     arena()
     do_deep()
     get_crystal()

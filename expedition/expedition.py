@@ -20,10 +20,6 @@ def get_random_arrays(num1,num2):
 def do_wanted(w,h):
     autoflag=0
     global battleflag
-<<<<<<< HEAD
-    i=0
-=======
->>>>>>> 13b4f6a886a5b7eb0a1e3e560f055c52bad147c3
     while(True):
         screen = G.DEVICE.snapshot() 
         # 局部截图
@@ -35,9 +31,8 @@ def do_wanted(w,h):
         pos = tempalte.match_in(local_screen)
 
         i=random.randint(-10,10)
-<<<<<<< HEAD
-        if a:
-            touch((0.92*w+i,0.33*h-i),duration=0.1)
+        if not (pos):
+            touch((0.71*w+i,0.23*h-i),duration=0.1)
         i+=1
         if i<=20:
 =======
@@ -52,17 +47,6 @@ def do_wanted(w,h):
             touch((0.87*w+i,0.92*h-i),duration=0.3)
             sleep(5)
             if battleflag==0:
-<<<<<<< HEAD
-                touch((0.63*w+i,0.69*h-i),times=2,duration=0.3)
-                battleflag=1
-                sleep(15)
-            if autoflag==0:
-                if not exists(Template(r"tpl1650014663425.png", record_pos=(0.284, 0.265), resolution=(1600, 900),rgb=True,threshold=0.5)):
-                    touch((0.88*w,0.043*h),times=2,duration=0.02)
-                    autoflag=1
-                    sleep(8)
-            sleep(380)
-=======
                 touch((0.63*w+i,0.69*h-i),duration=0.3)
                 battleflag=1
                 sleep(10)
@@ -72,7 +56,6 @@ def do_wanted(w,h):
                     autoflag=1
                     sleep(8)
             sleep(500)
->>>>>>> 13b4f6a886a5b7eb0a1e3e560f055c52bad147c3
             touch((0.12*w+i,0.92*h-i),duration=0.3)
             sleep(8)
             continue
@@ -83,11 +66,7 @@ def do_wanted(w,h):
 def expedition(a,b,c):
     i=random.randint(-10,10)
     w,h=device().get_current_resolution()
-<<<<<<< HEAD
-    touch((0.47*w+i,0.16*h-i),times=2,duration=1)
-=======
     touch((0.38*w+i,0.16*h-i),times=2,duration=1)
->>>>>>> 13b4f6a886a5b7eb0a1e3e560f055c52bad147c3
     touch((0.38*w+i,0.16*h-i),times=2,duration=1)
     sleep(5)
     touch((0.56*w+i,0.46*h-i),duration=1)
